@@ -82,7 +82,7 @@ export default function Lab1() {
         </ul>
         Your favorite books (in no particular order)
         <ul id="wd-your-books">
-          <li>Tuesday's With Morrie</li>
+          <li>Tuesday With Morrie</li>
           <li>Thinking Fast and Slow</li>
           <li>Atomic Habits</li>
           <li>48 Laws of Power</li>
