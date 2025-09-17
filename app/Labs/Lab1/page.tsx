@@ -157,7 +157,7 @@ export default function Lab1() {
             </tr>
             <tr>
               <td>Q10</td>
-              <td>API's</td>
+              <td>APIs</td>
               <td>2/30/21</td>
               <td>100</td>
             </tr>
