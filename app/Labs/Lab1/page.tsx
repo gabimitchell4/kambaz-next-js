@@ -1,3 +1,4 @@
+"use client";
 export default function Lab1() {
   return (
     <div id="wd-lab1">
@@ -118,6 +119,48 @@ export default function Lab1() {
               <td>2/17/21</td>
               <td>95</td>
             </tr>
+            <tr>
+              <td>Q4</td>
+              <td>Routing</td>
+              <td>2/22/21</td>
+              <td>98</td>
+            </tr>
+            <tr>
+              <td>Q5</td>
+              <td>Redux</td>
+              <td>2/25/21</td>
+              <td>99</td>
+            </tr>
+            <tr>
+              <td>Q6</td>
+              <td>Node</td>
+              <td>2/27/21</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>Q7</td>
+              <td>Session</td>
+              <td>2/29/21</td>
+              <td>95</td>
+            </tr>
+            <tr>
+              <td>Q8</td>
+              <td>MongoDB</td>
+              <td>2/30/21</td>
+              <td>98</td>
+            </tr>
+            <tr>
+              <td>Q9</td>
+              <td>Mongoose</td>
+              <td>2/31/21</td>
+              <td>98</td>
+            </tr>
+            <tr>
+              <td>Q10</td>
+              <td>API's</td>
+              <td>2/30/21</td>
+              <td>100</td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
@@ -171,17 +214,17 @@ export default function Lab1() {
             id="wd-textarea"
             cols={30}
             rows={10}
-            defaultValue={`Nulla et lectus consequat, auctor nisl eget, porta orci. Donec non
-            semper magna, in semper est. Aenean interdum dignissim ligula a
-            posuere. Etiam vitae sollicitudin risus. Cras lacinia molestie ex,
-            in pellentesque neque sollicitudin et. Donec sed sapien ut ante
-            laoreet iaculis. Suspendisse a facilisis turpis. Nam id eros
-            vehicula mi tempus semper nec non sapien. Donec fermentum est ut
-            ante interdum porta. In mollis lorem a nibh blandit, non tristique
-            tortor fringilla. Ut finibus feugiat nunc ac efficitur. Quisque a
-            egestas ipsum. Phasellus posuere ut nunc vitae eleifend. Integer
-            vitae diam sapien.`}
+            // prettier-ignore
+            defaultValue={`Nulla et lectus consequat, auctor nisl eget, porta orci. Donec non semper magna, in semper est. Aenean interdum dignissim ligula a posuere. Etiam vitae sollicitudin risus. Cras lacinia molestie ex, in pellentesque neque sollicitudin et. Donec sed sapien ut ante laoreet iaculis. Suspendisse a facilisis turpis. Nam id eros vehicula mi tempus semper nec non sapien. Donec fermentum est ut ante interdum porta. In mollis lorem a nibh blandit, non tristique tortor fringilla. Ut finibus feugiat nunc ac efficitur. Quisque a egestas ipsum. Phasellus posuere ut nunc vitae eleifend. Integer vitae diam sapien.`}
           />
+          <h5 id="wd-buttons">Buttons</h5>
+          <button
+            type="button"
+            onClick={() => alert("Life is Good!")}
+            id="wd-all-good"
+          >
+            Hello World!
+          </button>
           <h5 id="wd-radio-buttons">Radio buttons</h5>
           <label>Favorite movie genre:</label>
           <br />
@@ -224,15 +267,9 @@ export default function Lab1() {
           <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
           <br />
           <select multiple id="wd-select-many-genre">
-            <option defaultValue="COMEDY">
-              {" "}
-              Comedy{" "}
-            </option>
+            <option defaultValue="COMEDY">Comedy</option>
             <option value="DRAMA"> Drama </option>
-            <option value="SCIFI" selected>
-              {" "}
-              Science Fiction{" "}
-            </option>
+            <option value="SCIFI">Science Fiction</option>
             <option value="FANTASY"> Fantasy </option>
           </select>
           <h4>Other HTML field types</h4>
@@ -261,21 +298,28 @@ export default function Lab1() {
           />
           <br />
           <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
-          <input type="date" value="2000-01-21" id="wd-text-fields-dob" />
+          <input
+            type="date"
+            defaultValue="2000-01-21"
+            id="wd-text-fields-dob"
+          />
           <br />
         </form>
         <h4>Anchor tag</h4>
-        Please
+        Please{" "}
         <a href="https://www.lipsum.com" id="wd-lipsum">
           click here
-        </a>
+        </a>{" "}
         to get dummy text
         <br />
         <h4>Anchor tag</h4>
-        Please
-        <a href="https://github.com/gabimitchell4" id="wd-github">
+        Please{" "}
+        <a
+          href="https://github.com/gabimitchell4/kambaz-next-js"
+          id="wd-github"
+        >
           click here
-        </a>
+        </a>{" "}
         to go to my Github
         <br />
       </div>
