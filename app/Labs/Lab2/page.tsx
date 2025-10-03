@@ -90,7 +90,6 @@ export default function Lab2() {
         <GridLayout />
         <Flex />
         <ReactIcons />
-        <GridLayout />
         <BootstrapGrids />
         <ScreenSizeLabel />
         <BootstrapTables />
