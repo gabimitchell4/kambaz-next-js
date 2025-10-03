@@ -9,7 +9,7 @@ export default function Float() {
         />
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius hic Lorem
         Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the
+        Lorem Ipsum has been the industrys standard dummy text ever since the
         1500s, when an unknown printer took a galley of type and scrambled it to
         make a type specimen book. It has survived not only five centuries, but
         also the leap into electronic typesetting, remaining essentially
@@ -19,10 +19,10 @@ export default function Float() {
         Ipsum. Why do we use it? It is a long established fact that a reader
         will be distracted by the readable content of a page when looking at its
         layout. The point of using Lorem Ipsum is that it has a more-or-less
-        normal distribution of letters, as opposed to using 'Content here,
-        content here', making it look like readable English. Many desktop
+        normal distribution of letters, as opposed to using Content here,
+        content here, making it look like readable English. Many desktop
         publishing packages and web page editors now use Lorem Ipsum as their
-        default model text, and a search for 'lorem ipsum' will uncover many web
+        default model text, and a search for lorem ipsum will uncover many web
         sites still in their infancy. Various versions have evolved over the
         years, sometimes by accident, sometimes on purpose (injected humour and
         the like). Where does it come from? Contrary to popular belief, Lorem
@@ -38,7 +38,7 @@ export default function Float() {
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
         from a line in section 1.10.32. Lorem ipsum, dolor sit amet consectetur
         adipisicing elit. Eius hic Lorem Ipsum is simply dummy text of the
-        printing and typesetting industry. Lorem Ipsum has been the industry's
+        printing and typesetting industry. Lorem Ipsum has been the industrys
         standard dummy text ever since the 1500s, when an unknown printer took a
         galley of type and scrambled it to make a type specimen book. It has
         survived not only five centuries, but also the leap into electronic
@@ -49,10 +49,10 @@ export default function Float() {
         long established fact that a reader will be distracted by the readable
         content of a page when looking at its layout. The point of using Lorem
         Ipsum is that it has a more-or-less normal distribution of letters, as
-        opposed to using 'Content here, content here', making it look like
+        opposed to using Content here, content here, making it look like
         readable English. Many desktop publishing packages and web page editors
-        now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum' will uncover many web sites still in their infancy. Various
+        now use Lorem Ipsum as their default model text, and a search for lorem
+        ipsum will uncover many web sites still in their infancy. Various
         versions have evolved over the years, sometimes by accident, sometimes
         on purpose (injected humour and the like). Where does it come from?
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
@@ -66,7 +66,7 @@ export default function Float() {
         />
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius hic Lorem
         Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the
+        Lorem Ipsum has been the industrys standard dummy text ever since the
         1500s, when an unknown printer took a galley of type and scrambled it to
         make a type specimen book. It has survived not only five centuries, but
         also the leap into electronic typesetting, remaining essentially
@@ -76,10 +76,10 @@ export default function Float() {
         Ipsum. Why do we use it? It is a long established fact that a reader
         will be distracted by the readable content of a page when looking at its
         layout. The point of using Lorem Ipsum is that it has a more-or-less
-        normal distribution of letters, as opposed to using 'Content here,
-        content here', making it look like readable English. Many desktop
+        normal distribution of letters, as opposed to using Content here,
+        content here, making it look like readable English. Many desktop
         publishing packages and web page editors now use Lorem Ipsum as their
-        default model text, and a search for 'lorem ipsum' will uncover many web
+        default model text, and a search for lorem ipsum will uncover many web
         sites still in their infancy. Various versions have evolved over the
         years, sometimes by accident, sometimes on purpose (injected humour and
         the like). Where does it come from? Contrary to popular belief, Lorem
@@ -95,7 +95,7 @@ export default function Float() {
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
         from a line in section 1.10.32. Lorem ipsum, dolor sit amet consectetur
         adipisicing elit. Eius hic Lorem Ipsum is simply dummy text of the
-        printing and typesetting industry. Lorem Ipsum has been the industry's
+        printing and typesetting industry. Lorem Ipsum has been the industrys
         standard dummy text ever since the 1500s, when an unknown printer took a
         galley of type and scrambled it to make a type specimen book. It has
         survived not only five centuries, but also the leap into electronic
@@ -106,10 +106,10 @@ export default function Float() {
         long established fact that a reader will be distracted by the readable
         content of a page when looking at its layout. The point of using Lorem
         Ipsum is that it has a more-or-less normal distribution of letters, as
-        opposed to using 'Content here, content here', making it look like
+        opposed to using Content here, content here, making it look like
         readable English. Many desktop publishing packages and web page editors
-        now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum' will uncover many web sites still in their infancy. Various
+        now use Lorem Ipsum as their default model text, and a search for lorem
+        ipsum will uncover many web sites still in their infancy. Various
         versions have evolved over the years, sometimes by accident, sometimes
         on purpose (injected humour and the like). Where does it come from?
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
@@ -123,7 +123,7 @@ export default function Float() {
         />
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius hic Lorem
         Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the
+        Lorem Ipsum has been the industrys standard dummy text ever since the
         1500s, when an unknown printer took a galley of type and scrambled it to
         make a type specimen book. It has survived not only five centuries, but
         also the leap into electronic typesetting, remaining essentially
@@ -133,10 +133,10 @@ export default function Float() {
         Ipsum. Why do we use it? It is a long established fact that a reader
         will be distracted by the readable content of a page when looking at its
         layout. The point of using Lorem Ipsum is that it has a more-or-less
-        normal distribution of letters, as opposed to using 'Content here,
-        content here', making it look like readable English. Many desktop
+        normal distribution of letters, as opposed to using Content here,
+        content here, making it look like readable English. Many desktop
         publishing packages and web page editors now use Lorem Ipsum as their
-        default model text, and a search for 'lorem ipsum' will uncover many web
+        default model text, and a search for lorem ipsum will uncover many web
         sites still in their infancy. Various versions have evolved over the
         years, sometimes by accident, sometimes on purpose (injected humour and
         the like). Where does it come from? Contrary to popular belief, Lorem
@@ -152,7 +152,7 @@ export default function Float() {
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
         from a line in section 1.10.32. Lorem ipsum, dolor sit amet consectetur
         adipisicing elit. Eius hic Lorem Ipsum is simply dummy text of the
-        printing and typesetting industry. Lorem Ipsum has been the industry's
+        printing and typesetting industry. Lorem Ipsum has been the industrys
         standard dummy text ever since the 1500s, when an unknown printer took a
         galley of type and scrambled it to make a type specimen book. It has
         survived not only five centuries, but also the leap into electronic
@@ -163,10 +163,10 @@ export default function Float() {
         long established fact that a reader will be distracted by the readable
         content of a page when looking at its layout. The point of using Lorem
         Ipsum is that it has a more-or-less normal distribution of letters, as
-        opposed to using 'Content here, content here', making it look like
+        opposed to using Content here, content here, making it look like
         readable English. Many desktop publishing packages and web page editors
-        now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum' will uncover many web sites still in their infancy. Various
+        now use Lorem Ipsum as their default model text, and a search for lorem
+        ipsum will uncover many web sites still in their infancy. Various
         versions have evolved over the years, sometimes by accident, sometimes
         on purpose (injected humour and the like). Where does it come from?
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
@@ -180,7 +180,7 @@ export default function Float() {
         />
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius hic Lorem
         Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the
+        Lorem Ipsum has been the industrys standard dummy text ever since the
         1500s, when an unknown printer took a galley of type and scrambled it to
         make a type specimen book. It has survived not only five centuries, but
         also the leap into electronic typesetting, remaining essentially
@@ -190,10 +190,10 @@ export default function Float() {
         Ipsum. Why do we use it? It is a long established fact that a reader
         will be distracted by the readable content of a page when looking at its
         layout. The point of using Lorem Ipsum is that it has a more-or-less
-        normal distribution of letters, as opposed to using 'Content here,
-        content here', making it look like readable English. Many desktop
+        normal distribution of letters, as opposed to using Content here,
+        content here, making it look like readable English. Many desktop
         publishing packages and web page editors now use Lorem Ipsum as their
-        default model text, and a search for 'lorem ipsum' will uncover many web
+        default model text, and a search for lorem ipsum will uncover many web
         sites still in their infancy. Various versions have evolved over the
         years, sometimes by accident, sometimes on purpose (injected humour and
         the like). Where does it come from? Contrary to popular belief, Lorem
@@ -209,7 +209,7 @@ export default function Float() {
         The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
         from a line in section 1.10.32. Lorem ipsum, dolor sit amet consectetur
         adipisicing elit. Eius hic Lorem Ipsum is simply dummy text of the
-        printing and typesetting industry. Lorem Ipsum has been the industry's
+        printing and typesetting industry. Lorem Ipsum has been the industrys
         standard dummy text ever since the 1500s, when an unknown printer took a
         galley of type and scrambled it to make a type specimen book. It has
         survived not only five centuries, but also the leap into electronic
@@ -220,10 +220,10 @@ export default function Float() {
         long established fact that a reader will be distracted by the readable
         content of a page when looking at its layout. The point of using Lorem
         Ipsum is that it has a more-or-less normal distribution of letters, as
-        opposed to using 'Content here, content here', making it look like
+        opposed to using Content here, content here, making it look like
         readable English. Many desktop publishing packages and web page editors
-        now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum' will uncover many web sites still in their infancy. Various
+        now use Lorem Ipsum as their default model text, and a search for lorem
+        ipsum will uncover many web sites still in their infancy. Various
         versions have evolved over the years, sometimes by accident, sometimes
         on purpose (injected humour and the like). Where does it come from?
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
