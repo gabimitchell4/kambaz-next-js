@@ -1,3 +1,3 @@
 export default function Grades() {
-    return <h1>Grades</h1>;
-  }
+  return <h1>Grades</h1>;
+}

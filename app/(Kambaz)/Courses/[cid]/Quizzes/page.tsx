@@ -1,3 +1,3 @@
 export default function Quizzes() {
-    return <h1>Quizzes</h1>;
-  }
+  return <h1>Quizzes</h1>;
+}
