@@ -3,9 +3,10 @@ import LessonControlButtons from "../Modules/LessonControlButtons";
 import ListGroup from "react-bootstrap/ListGroup";
 import { BsGripVertical } from "react-icons/bs";
 import { HiOutlinePencilAlt } from "react-icons/hi";
+import { Assignment } from "../../../Database";
 
 interface AssignmentTextProps {
-  assignmentName: string;
+  assignment: Assignment;
   moduleType: string;
   releaseDate: string;
   releaseTime: string;
@@ -13,22 +14,20 @@ interface AssignmentTextProps {
   dueTime: string;
   points: number;
 }
-export default function AssignmentDesc(
-  {
-    assignmentName,
-    moduleType,
-    releaseDate,
-    releaseTime,
-    dueDate,
-    dueTime,
-    points,
-  }: AssignmentTextProps,
-) {
+export default function AssignmentDesc({
+  assignment,
+  moduleType,
+  releaseDate,
+  releaseTime,
+  dueDate,
+  dueTime,
+  points,
+}: AssignmentTextProps) {
   const router = useRouter();
   const { cid } = useParams() as { cid: string };
 
   const handleClick = () => {
-    router.push(`/Courses/${[cid]}/Assignments/${assignmentName}`);
+    router.push(`/Courses/${[cid]}/Assignments/${assignment._id}`);
   };
   return (
     <div
@@ -44,7 +43,7 @@ export default function AssignmentDesc(
           </div>
 
           <div className="d-flex flex-column">
-            <span>{assignmentName}</span>
+            <span>{assignment.title}</span>
             <span className="me-3">
               {moduleType} | <strong>Not available until </strong>
               {releaseDate} at {releaseTime} | <br /> <strong>Due </strong>

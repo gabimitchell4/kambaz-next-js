@@ -9,8 +9,12 @@ import InputGroupText from "react-bootstrap/InputGroupText";
 import { Form } from "react-bootstrap";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
-import { Row, Col } from "react-bootstrap"; 
+import * as db from "../../../Database";
+import { useParams } from "next/navigation";
+
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments = db.assignments;
   return (
     <div id="wd-assignments">
       <div className="wd-assignment-top d-flex justify-content-between">
@@ -43,33 +47,24 @@ export default function Assignments() {
           </div>
           <br />
           <ListGroup className="wd-assignment rounded-0 w-100">
-            <AssignmentDesc
-              assignmentName="A1"
-              moduleType="Multiple Modules"
-              releaseDate="May 2th"
-              releaseTime="12am"
-              dueDate="May 10th"
-              dueTime="11:59pm"
-              points={100}
-            />
-            <AssignmentDesc
-              assignmentName="A2"
-              moduleType="Multiple Modules"
-              releaseDate="May 6th"
-              releaseTime="12am"
-              dueDate="May 13th"
-              dueTime="11:59pm"
-              points={100}
-            />
-            <AssignmentDesc
-              assignmentName="A3"
-              moduleType="Multiple Modules"
-              releaseDate="May 6th"
-              releaseTime="12am"
-              dueDate="May 15th"
-              dueTime="11:59pm"
-              points={100}
-            />
+            {assignments
+              .filter((assignment: any) => assignment.course === cid)
+              .map((assignment: any) => (
+                <ListGroup.Item
+                  key={assignment._id}
+                  className="wd-assignment p-0 fs-5 border-0"
+                >
+                  <AssignmentDesc
+                    assignment={assignment}
+                    moduleType="Multiple Modules"
+                    releaseDate={assignment.releaseDate || "May 2th"}
+                    releaseTime={assignment.releaseTime || "12am"}
+                    dueDate={assignment.dueDate || "May 10th"}
+                    dueTime={assignment.dueTime || "11:59pm"}
+                    points={assignment.points || 100}
+                  />
+                </ListGroup.Item>
+              ))}
           </ListGroup>
         </ListGroup.Item>
       </ListGroup>
