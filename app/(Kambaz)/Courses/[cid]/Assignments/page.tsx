@@ -11,6 +11,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
 import * as db from "../../../Database";
 import { useParams } from "next/navigation";
+import { Assignment } from "../../../Database";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -48,8 +49,8 @@ export default function Assignments() {
           <br />
           <ListGroup className="wd-assignment rounded-0 w-100">
             {assignments
-              .filter((assignment: any) => assignment.course === cid)
-              .map((assignment: any) => (
+              .filter((assignment) => assignment.course === cid)
+              .map((assignment) => (
                 <ListGroup.Item
                   key={assignment._id}
                   className="wd-assignment p-0 fs-5 border-0"
@@ -57,10 +58,8 @@ export default function Assignments() {
                   <AssignmentDesc
                     assignment={assignment}
                     moduleType="Multiple Modules"
-                    releaseDate={assignment.releaseDate || "May 2th"}
-                    releaseTime={assignment.releaseTime || "12am"}
-                    dueDate={assignment.dueDate || "May 10th"}
-                    dueTime={assignment.dueTime || "11:59pm"}
+                    releaseDate={assignment.releaseDateTime || "May 2th"}
+                    dueDate={assignment.dueDateTime || "May 10th"}
                     points={assignment.points || 100}
                   />
                 </ListGroup.Item>

@@ -9,26 +9,36 @@ interface AssignmentTextProps {
   assignment: Assignment;
   moduleType: string;
   releaseDate: string;
-  releaseTime: string;
   dueDate: string;
-  dueTime: string;
   points: number;
 }
+
 export default function AssignmentDesc({
   assignment,
   moduleType,
   releaseDate,
-  releaseTime,
   dueDate,
-  dueTime,
   points,
 }: AssignmentTextProps) {
   const router = useRouter();
   const { cid } = useParams() as { cid: string };
 
+  const formatDateTime = (dateString: string) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    }).format(date);
+  };
+
   const handleClick = () => {
     router.push(`/Courses/${[cid]}/Assignments/${assignment._id}`);
   };
+
   return (
     <div
       className="wd-assignment d-flex align-items-center"
@@ -46,8 +56,8 @@ export default function AssignmentDesc({
             <span>{assignment.title}</span>
             <span className="me-3">
               {moduleType} | <strong>Not available until </strong>
-              {releaseDate} at {releaseTime} | <br /> <strong>Due </strong>
-              {dueDate} at {dueTime} | {points} pts
+              {formatDateTime(releaseDate)} | <br /> <strong>Due </strong>
+              {formatDateTime(dueDate)} | {points} pts
             </span>
           </div>
 

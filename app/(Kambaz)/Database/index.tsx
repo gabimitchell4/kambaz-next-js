@@ -17,15 +17,15 @@ interface Module {
     _id: string;
     title: string;
     course: string;
-    releaseDate: string;
-    dueDate: string;
+    releaseDate?: string;
+    dueDate?: string;
     points: number;
     description: string;
-    displayType: string;
-    assignmentGroup: string;
-    submissionType: string;
-    onlineEntryOption: string;
-    assignTo: string;
+    displayType?: string;
+    assignmentGroup?: string;
+    submissionType?: string;
+    onlineEntryOption?: string;
+    assignTo?: string;
   }
   
   interface User {

@@ -3,22 +3,8 @@ import { Row, Col } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import { useParams } from "next/navigation";
 import * as db from "../../../Database";
-
-type User = {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  loginId: string;
-  section: string;
-  role: string;
-  lastActivity: string;
-  totalActivity: string;
-};
-
-type Enrollment = {
-  user: string;
-  course: string;
-};
+import { User } from "../../../Database";
+import { Enrollment } from "../../../Database";
 
 export default function PeopleTable() {
   const { cid } = useParams();
