@@ -1,5 +1,5 @@
 const loggedIn = true;
-export default function () {
+export default function TernaryOperator() {
   return (
     <div id="wd-ternary-operator">
       <h4>Logged In</h4>
