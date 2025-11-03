@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListGroupItem, Button } from "react-bootstrap";
 
 import React from "react";

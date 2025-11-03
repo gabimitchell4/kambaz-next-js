@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams, useRouter } from "next/navigation";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import ListGroup from "react-bootstrap/ListGroup";
