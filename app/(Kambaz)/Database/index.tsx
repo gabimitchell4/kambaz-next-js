@@ -17,8 +17,8 @@ interface Module {
     _id: string;
     title: string;
     course: string;
-    releaseDate?: string;
-    dueDate?: string;
+    releaseDateTime?: string;
+    dueDateTime?: string;
     points: number;
     description: string;
     displayType?: string;

@@ -1,19 +1,19 @@
 "use client";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-const links = [
-  "Home",
-  "Modules",
-  "Piazza",
-  "Zoom",
-  "Assignments",
-  "Quizzes",
-  "Grades",
-  "People",
-];
-
+import { useSelector } from "react-redux";
 export default function CourseNavigation() {
-  const { cid } = useParams() as { cid: string };
+  const links = [
+    "Home",
+    "Modules",
+    "Piazza",
+    "Zoom",
+    "Assignments",
+    "Quizzes",
+    "Grades",
+    "People",
+  ];
+  const { cid } = useParams() as { cid : string };
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
       {links.map((link) => (

@@ -1,32 +1,75 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import * as db from "../../../../Database";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Card } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAssignment, updateAssignment } from "../reducer";
+import { useState } from "react";
 
 export default function AssignmentEditor() {
-  const { aid } = useParams<{ aid: string; cid: string }>();
-  const assignment = db.assignments.find(
-    (assignment) => assignment._id === aid
+  const { aid, cid } = useParams<{ aid: string; cid: string }>();
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleCancel = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push(`/Courses/${cid}/Assignments`);
+  };
+
+  const handleSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Saving ", assignment);
+    dispatch(updateAssignment(assignment));
+    router.push(`/Courses/${cid}/Assignments`);
+  };
+
+  const [assignment, setAssignment] = useState<db.Assignment>(
+    assignments.find((assignment: any) => assignment._id === aid) ?? {
+      _id: aid ?? "",
+      title: "New Assignment",
+      course: cid ?? "",
+      moduleType: "Multiple Modules",
+      releaseDateTime: "2025-05-02T00:00",
+      dueDateTime: "2025-05-10T23:59",
+      points: 100,
+      description: "",
+      status: "Published",
+      assignTo: "Everyone",
+      assignmentGroup: "ASSIGNMENTS",
+      displayType: "Percentage",
+      submissionType: "Online",
+    }
   );
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    console.log("CHANGE", e.target.id, e.target.value);
+    const { id, value } = e.target;
+    setAssignment((prev) => ({ ...prev, [id]: value }));
+  };
 
   return (
     <div id="wd-assignments-editor">
       {assignment ? (
         <Form>
-          <Form.Label htmlFor="wd-name p-1">Assignment Name</Form.Label>
+          <Form.Label htmlFor="title p-1">Assignment Name</Form.Label>
           <br />
           <Form.Control
             style={{ width: "60%" }}
             className="p-2"
-            id="wd-name"
-            defaultValue={assignment.title}
+            id="title"
+            value={assignment.title}
+            onChange={handleChange}
           />
           <br />
           <div
-            id="wd-description"
+            id="description"
             style={{
               width: "60%",
               padding: "10px",
@@ -39,24 +82,29 @@ export default function AssignmentEditor() {
           <br />
           <Row className="mt-3">
             <Col sm={2} className="d-flex align-items-center">
-              <Form.Label htmlFor="wd-points" className="text-end">
+              <Form.Label htmlFor="points" className="text-end">
                 Points
               </Form.Label>
             </Col>
             <Col sm={5}>
-              <Form.Control id="wd-points" defaultValue={assignment.points} />
+              <Form.Control
+                id="points"
+                value={assignment.points}
+                onChange={handleChange}
+              />
             </Col>
           </Row>
           <Row className="mt-3">
             <Col sm={2}>
-              <Form.Label htmlFor="wd-group" className="text-end">
+              <Form.Label htmlFor="assignmentGroup" className="text-end">
                 Assignment Group
               </Form.Label>
             </Col>
             <Col sm={5}>
               <Form.Select
-                id="wd-group"
-                defaultValue={assignment.assignmentGroup}
+                id="assignmentGroup"
+                value={assignment.assignmentGroup}
+                onChange={handleChange}
               >
                 <option value="ASSIGNMENTS">ASSIGNMENTS</option>
                 <option value="QUIZZES">QUIZZES</option>
@@ -67,14 +115,15 @@ export default function AssignmentEditor() {
           </Row>
           <Row className="mt-3">
             <Col sm={2}>
-              <Form.Label htmlFor="wd-display-grade-as" className="text-end">
+              <Form.Label htmlFor="displayType" className="text-end">
                 Display Grade as
               </Form.Label>
             </Col>
             <Col sm={5}>
               <Form.Select
-                id="wd-display-grade-as"
-                defaultValue={assignment.displayType}
+                id="displayType"
+                value={assignment.displayType}
+                onChange={handleChange}
               >
                 <option value="Percentage">Percentage</option>
                 <option value="Letter">Letter</option>
@@ -84,14 +133,15 @@ export default function AssignmentEditor() {
           <Card className="p-3 mt-3" style={{ width: "60%" }}>
             <Row className="mt-3">
               <Col className="d-flex">
-                <Form.Label htmlFor="wd-submission-type">
+                <Form.Label htmlFor="submissionType">
                   Submission Type
                 </Form.Label>
               </Col>
               <Col>
                 <Form.Select
-                  id="wd-submission-type"
-                  defaultValue={assignment.submissionType}
+                  id="submissionType"
+                  value={assignment.submissionType}
+                  onChange={handleChange}
                 >
                   <option value="Online">Online</option>
                   <option value="In-person">In-person</option>
@@ -102,36 +152,37 @@ export default function AssignmentEditor() {
           <Card className="p-3 mt-3" style={{ width: "60%" }}>
             <Form.Label className="fw-bold">Assign to</Form.Label>
             <Form.Control
-              defaultValue={assignment.assignTo}
-              id="wd-assign-to"
+              value={assignment.assignTo}
+              id="assignTo"
+              onChange={handleChange}
             />
             <br />
-            <Form.Label htmlFor="wd-due-date">Due</Form.Label>
+            <Form.Label htmlFor="dueDateTime">Due</Form.Label>
             <Form.Control
               type="datetime-local"
-              id="wd-due-date"
-              defaultValue={
+              id="dueDateTime"
+              value={
                 assignment.dueDateTime
-                  ? new Date(assignment.dueDateTime).toISOString().slice(0, 16)
+                  ? assignment.dueDateTime.slice(0, 16)
                   : ""
               }
+              onChange={handleChange}
             />
             <br />
             <Row className="mb-3 align-items-center">
               <Col sm={6}>
-                <Form.Label htmlFor="wd-available-from">
+                <Form.Label htmlFor="releaseDateTime">
                   Available from
                 </Form.Label>
                 <Form.Control
                   type="datetime-local"
-                  id="wd-available-from"
-                  defaultValue={
+                  id="releaseDateTime"
+                  value={
                     assignment.releaseDateTime
-                      ? new Date(assignment.releaseDateTime)
-                          .toISOString()
-                          .slice(0, 16)
+                      ? assignment.releaseDateTime.slice(0, 16)
                       : ""
                   }
+                  onChange={handleChange}
                 />
               </Col>
               <Col sm={6}>
@@ -141,20 +192,26 @@ export default function AssignmentEditor() {
                 <Form.Control
                   type="datetime-local"
                   id="wd-available-until"
-                  defaultValue={
+                  value={
                     assignment.dueDateTime
-                      ? new Date(assignment.dueDateTime)
-                          .toISOString()
-                          .slice(0, 16)
+                      ? assignment.dueDateTime.slice(0, 16)
                       : ""
                   }
+                  onChange={handleChange}
                 />
               </Col>
             </Row>
           </Card>
           <hr />
-          <button className="btn btn-secondary border-1 me-2">Cancel</button>
-          <button className="btn btn-danger border-1">Save</button>
+          <button
+            className="btn btn-secondary border-1 me-2"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button className="btn btn-danger border-1" onClick={handleSave}>
+            Save
+          </button>
         </Form>
       ) : (
         <p className="text-center text-danger">

@@ -4,6 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { BsGripVertical } from "react-icons/bs";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { Assignment } from "../../../Database";
+import { useSelector } from "react-redux";
 
 interface AssignmentTextProps {
   assignment: Assignment;
@@ -22,6 +23,7 @@ export default function AssignmentDesc({
 }: AssignmentTextProps) {
   const router = useRouter();
   const { cid } = useParams() as { cid: string };
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
@@ -36,7 +38,9 @@ export default function AssignmentDesc({
   };
 
   const handleClick = () => {
-    router.push(`/Courses/${[cid]}/Assignments/${assignment._id}`);
+    if (currentUser.role === "FACULTY") {
+      router.push(`/Courses/${[cid]}/Assignments/${assignment._id}`);
+    }
   };
 
   return (
@@ -49,7 +53,9 @@ export default function AssignmentDesc({
         <ListGroup.Item className="wd-lesson d-flex w-100 align-items-center justify-content-between">
           <div className="d-flex align-items-center">
             <BsGripVertical className="me-3 fs-3" />
-            <HiOutlinePencilAlt className="me-3" />
+            {currentUser.role === "FACULTY" && (
+              <HiOutlinePencilAlt className="me-3" />
+            )}
           </div>
 
           <div className="d-flex flex-column">
