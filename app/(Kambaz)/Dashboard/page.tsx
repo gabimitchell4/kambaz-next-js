@@ -72,7 +72,7 @@ export default function Dashboard() {
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      {currentUser.role === "FACULTY" && (
+      {currentUser && currentUser.role === "FACULTY" && (
         <>
           <h5>
             <Button
@@ -170,7 +170,7 @@ export default function Dashboard() {
                         {course.description}{" "}
                       </CardText>
                       <Button variant="primary"> Go </Button>
-                      {currentUser.role === "FACULTY" && (
+                      {currentUser && currentUser.role === "FACULTY" && (
                         <>
                           <button
                             onClick={(
