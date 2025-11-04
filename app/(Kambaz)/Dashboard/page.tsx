@@ -123,7 +123,7 @@ export default function Dashboard() {
         </>
       )}
   
-      {currentUser.role === "STUDENT" && (
+      {currentUser && currentUser.role === "STUDENT" && (
         <div className="d-flex justify-content-end">
           <Button onClick={() => setShowAllCourses(!showAllCourses)}>
             Enrollments
