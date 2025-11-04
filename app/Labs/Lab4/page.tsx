@@ -11,6 +11,8 @@ import ObjectStateVariable from "./ObjectStateVariable";
 import ReduxExamples from "./ReduxExamples";
 import store from "./store";
 import { Provider } from "react-redux";
+import ArrayStateVariable from "./ArrayStateVariable";
+import ParentStateComponent from "./ParentStateComponent";
 
 export default function Lab4() {
   function sayHello() {
@@ -29,6 +31,8 @@ export default function Lab4() {
         <StringStateVariables />
         <DateStateVariable />
         <ObjectStateVariable />
+        <ArrayStateVariable />
+        <ParentStateComponent />
         <ReduxExamples />
       </div>
     </Provider>

@@ -79,7 +79,9 @@ export default function Assignments() {
             <IoIosArrowDown className="me-3 fs-3" />
             <span className="d-flex align-items-center"> ASSIGNMENTS</span>
             <div className="ms-auto d-flex align-items-flex-end me-3">
-              <AssignmentControlButtons percent={40} />
+              {currentUser.role === "FACULTY" && (
+                <AssignmentControlButtons percent={40} />
+              )}
             </div>
           </div>
           <br />
@@ -100,13 +102,15 @@ export default function Assignments() {
                       points={assignment.points || 100}
                     />
                   </div>
-                  <button
-                    className="btn btn-danger border-0 rounded-circle p-2 ms-3"
-                    onClick={() => handleDeleteClick(assignment)}
-                    title="Delete Assignment"
-                  >
-                    <FaTrash className="fs-5" />
-                  </button>
+                  {currentUser.role === "FACULTY" && (
+                    <button
+                      className="btn btn-danger border-0 rounded-circle p-2 ms-3"
+                      onClick={() => handleDeleteClick(assignment)}
+                      title="Delete Assignment"
+                    >
+                      <FaTrash className="fs-5" />
+                    </button>
+                  )}
                 </ListGroup.Item>
               ))}
           </ListGroup>
