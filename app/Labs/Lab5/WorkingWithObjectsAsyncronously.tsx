@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { FaPencil } from "react-icons/fa6";
 import React, { useState, useEffect } from "react";
