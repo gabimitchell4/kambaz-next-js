@@ -16,12 +16,15 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { deleteAssignment } from "./reducer";
+
+import * as courseClient from "./client";
+import * as assignmentClient from "./client";
 
 export default function Assignments() {
   const { cid } = useParams();
-  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  const [assignments, setAssignments] = useState<any[]>([]);
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const dispatch = useDispatch();
 
@@ -30,16 +33,41 @@ export default function Assignments() {
     _id: string;
   } | null>(null);
 
+  // const [currentUser, setCurrentUser] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const user = await assignmentClient.fetchCurrentUser; // Replace with your API call
+        // setCurrentUser(user);
+      } catch (error) {
+        console.error("Failed to fetch current user:", error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
+
   const handleDeleteClick = (assignment: any) => {
     setSelectedAssignment(assignment);
     setShowDeleteModal(true);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (selectedAssignment) {
-      dispatch(deleteAssignment(selectedAssignment._id));
-      setShowDeleteModal(false);
-      setSelectedAssignment(null);
+      try {
+        await assignmentClient.deleteAssignment(selectedAssignment._id);
+        dispatch(deleteAssignment(selectedAssignment._id));
+        setAssignments((prevAssignments) =>
+          prevAssignments.filter(
+            (assignment) => assignment._id !== selectedAssignment._id
+          )
+        );
+        setShowDeleteModal(false);
+        setSelectedAssignment(null);
+      } catch (error) {
+        console.error("Failed to delete assignment:", error);
+      }
     }
   };
 
@@ -47,6 +75,23 @@ export default function Assignments() {
     setShowDeleteModal(false);
     setSelectedAssignment(null);
   };
+
+  const fetchAssignments = async () => {
+    console.log("FETCHING ASSIGNMENTS FOR COURSE", cid);
+    try {
+      const assignments = await courseClient.findAllAssignmentsForCourse(
+        cid as string
+      );
+      console.log("ASSIGNMENTS FETCHED:", assignments);
+      setAssignments(assignments);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
 
   return (
     <div id="wd-assignments">
@@ -86,33 +131,31 @@ export default function Assignments() {
           </div>
           <br />
           <ListGroup className="wd-assignment rounded-0 w-100">
-            {assignments
-              .filter((assignment: any) => assignment.course === cid)
-              .map((assignment: any) => (
-                <ListGroup.Item
-                  key={assignment._id}
-                  className="wd-assignment p-3 mb-3 border rounded d-flex align-items-center w-100"
-                >
-                  <div className="flex-grow-1">
-                    <AssignmentDesc
-                      assignment={assignment}
-                      moduleType="Multiple Modules"
-                      releaseDate={assignment.releaseDateTime}
-                      dueDate={assignment.dueDateTime}
-                      points={assignment.points || 100}
-                    />
-                  </div>
-                  {currentUser.role === "FACULTY" && (
-                    <button
-                      className="btn btn-danger border-0 rounded-circle p-2 ms-3"
-                      onClick={() => handleDeleteClick(assignment)}
-                      title="Delete Assignment"
-                    >
-                      <FaTrash className="fs-5" />
-                    </button>
-                  )}
-                </ListGroup.Item>
-              ))}
+            {assignments.map((assignment: any) => (
+              <ListGroup.Item
+                key={assignment._id}
+                className="wd-assignment p-3 mb-3 border rounded d-flex align-items-center w-100"
+              >
+                <div className="flex-grow-1">
+                  <AssignmentDesc
+                    assignment={assignment}
+                    moduleType="Multiple Modules"
+                    releaseDate={assignment.releaseDateTime}
+                    dueDate={assignment.dueDateTime}
+                    points={assignment.points || 100}
+                  />
+                </div>
+                {currentUser.role === "FACULTY" && (
+                  <button
+                    className="btn btn-danger border-0 rounded-circle p-2 ms-3"
+                    onClick={() => handleDeleteClick(assignment)}
+                    title="Delete Assignment"
+                  >
+                    <FaTrash className="fs-5" />
+                  </button>
+                )}
+              </ListGroup.Item>
+            ))}
           </ListGroup>
         </ListGroup.Item>
         <Modal show={showDeleteModal} onHide={cancelDelete}>

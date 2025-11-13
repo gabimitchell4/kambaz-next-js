@@ -2,6 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { courses } from "../Database";
 import { v4 as uuidv4 } from "uuid";
+import { setCurrentUser } from "../Account/reducer";
 interface Course {
   _id: string;
   [key: string]: any;
@@ -44,6 +45,23 @@ const coursesSlice = createSlice({
         (id: string) => id !== courseId
       );
     },
+    deleteEnrollment: (state, { payload: { enrollmentId } }) => {
+      state.enrollments = state.enrollments.filter(
+        (e: any) => e._id !== enrollmentId
+      );
+    },
+    addEnrollment: (state, { payload: enrollment }) => {
+      state.enrollments = [...state.enrollments, enrollment] as any;
+    },
+    setEnrollments: (state, { payload: enrollments }) => {
+      state.enrollments = enrollments;
+    },
+    // getUserEnrollments: (state, action) => {
+    //   // Implementation can be added here if needed
+    // },
+    // setCurrentUser: (state, action) => {
+
+    // }
   },
 });
 export const {
@@ -52,5 +70,8 @@ export const {
   updateCourse,
   enrollInCourse,
   unenrollFromCourse,
+  deleteEnrollment,
+  addEnrollment,
+  setEnrollments,
 } = coursesSlice.actions;
 export default coursesSlice.reducer;

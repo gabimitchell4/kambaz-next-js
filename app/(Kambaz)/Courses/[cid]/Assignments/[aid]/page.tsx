@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAssignment, updateAssignment } from "../reducer";
 import { useState } from "react";
+import * as assignmentsClient from "../client";
 
 export default function AssignmentEditor() {
   const { aid, cid } = useParams<{ aid: string; cid: string }>();
@@ -21,9 +22,14 @@ export default function AssignmentEditor() {
     router.push(`/Courses/${cid}/Assignments`);
   };
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Saving ", assignment);
+    // if (assignment?.isNew) {
+    //   // delete assignment.isNew;
+    //   await assignmentsClient.createAssignment(assignment);
+    // } else {
+    await assignmentsClient.updateAssignment(assignment._id, assignment);
+    // }
     dispatch(updateAssignment(assignment));
     router.push(`/Courses/${cid}/Assignments`);
   };
