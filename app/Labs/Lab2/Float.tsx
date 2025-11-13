@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 export default function Float() {
   return (
     <div id="wd-float-divs">
