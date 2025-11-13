@@ -72,7 +72,7 @@ export const updateModule = async (module: any) => {
 
 export const deleteEnrollment = async (userId: string, courseId: string) => {
   console.log("Deleting enrollment for user:", userId, courseId); // Debugging
-  const response = await axiosWithCredentials.delete(
+  const response = await axios.delete(
     `${USERS_API}/${userId}/enrollments/${courseId}`
   );
   return response.data;
@@ -80,7 +80,7 @@ export const deleteEnrollment = async (userId: string, courseId: string) => {
 
 export const addEnrollment = async (userId: string, courseId: any) => {
   console.log("Adding enrollment for user:", userId, courseId); // Debugging
-  const response = await axiosWithCredentials.post(
+  const response = await axios.post(
     `${USERS_API}/${userId}/enrollments/${courseId}`
   );
   return response.data;
