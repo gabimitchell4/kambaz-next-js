@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Row, Col } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";

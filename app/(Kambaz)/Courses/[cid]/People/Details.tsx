@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useParams, useRouter } from "next/navigation";
@@ -23,7 +24,7 @@ export default function PeopleDetails({
   useEffect(() => {
     if (uid) fetchUser();
   }, [uid]);
-  if (!uid) return null;
+  if (!uid) return;
   const deleteUser = async (uid: string) => {
     await client.deleteUser(uid);
     onClose();
