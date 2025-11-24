@@ -63,9 +63,92 @@ export default function Dashboard() {
   const fetchEnrollments = async () => {
     try {
       const userEnrollments = await client.getUserEnrollments(currentUser._id);
-      setEnrollments(
-        userEnrollments.map((enrollment: any) => enrollment.course)
+      console.log("userEnrollments:", userEnrollments);
+      if (!userEnrollments) {
+        console.log("No enrollments found for user", currentUser._id);
+        setEnrollments([]);
+        return;
+      }
+
+      // If it's an array, map directly
+      if (Array.isArray(userEnrollments)) {
+        if (userEnrollments.length === 0) {
+          console.log(
+            "No enrollments found (empty array) for user",
+            currentUser._id
+          );
+          setEnrollments([]);
+        } else {
+          setEnrollments(
+            userEnrollments.map((enrollment: any) => enrollment.course)
+          );
+        }
+        return;
+      }
+
+      // If it's an object, try common wrapper keys
+      if (typeof userEnrollments === "object") {
+        // common wrapper properties
+        const maybeArray =
+          Array.isArray((userEnrollments as any).enrollments) &&
+          (userEnrollments as any).enrollments
+            ? (userEnrollments as any).enrollments
+            : Array.isArray((userEnrollments as any).data) &&
+                (userEnrollments as any).data
+              ? (userEnrollments as any).data
+              : Array.isArray((userEnrollments as any).results) &&
+                  (userEnrollments as any).results
+                ? (userEnrollments as any).results
+                : null;
+
+        if (maybeArray) {
+          if (maybeArray.length === 0) {
+            console.log(
+              "No enrollments found in wrapper for user",
+              currentUser._id
+            );
+            setEnrollments([]);
+          } else {
+            setEnrollments(
+              maybeArray.map((enrollment: any) => enrollment.course)
+            );
+          }
+          return;
+        }
+
+        // Single enrollment object?
+        if ((userEnrollments as any).course) {
+          setEnrollments([(userEnrollments as any).course]);
+          return;
+        }
+
+        // As a fallback, look for objects with a 'course' property among the values
+        const values = Object.values(userEnrollments as any);
+        const found = values.filter(
+          (v: any) => v && typeof v === "object" && "course" in v
+        );
+        if (found.length) {
+          setEnrollments(found.map((e: any) => e.course));
+          return;
+        }
+
+        // Unknown shape
+        console.warn(
+          "Unrecognized enrollments shape for user",
+          currentUser._id,
+          userEnrollments
+        );
+        setEnrollments([]);
+        return;
+      }
+
+      // Fallback: not an object/array
+      console.warn(
+        "Unexpected enrollments response type for user",
+        currentUser._id,
+        typeof userEnrollments
       );
+      setEnrollments([]);
     } catch (error) {
       console.error("Error fetching enrollments:", error);
     }
