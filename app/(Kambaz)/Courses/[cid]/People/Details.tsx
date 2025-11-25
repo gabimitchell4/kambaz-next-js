@@ -5,7 +5,7 @@ import { FaPencil } from "react-icons/fa6";
 import { FaCheck, FaUserCircle } from "react-icons/fa";
 import * as client from "../../../Account/client";
 import { FormControl } from "react-bootstrap";
-
+ 
 export default function PeopleDetails({
   uid,
   onClose,
