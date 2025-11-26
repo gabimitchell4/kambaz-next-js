@@ -27,7 +27,10 @@ export default function AssignmentDesc({
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const formatDateTime = (dateString: string) => {
+    if (!dateString) return "TBD";
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "TBD";
+
     return new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "long",
@@ -37,6 +40,10 @@ export default function AssignmentDesc({
       hour12: true,
     }).format(date);
   };
+
+  // Defaults taken from the UI screenshot: Available from 05/02/2025 12:00 AM, Available until 05/10/2025 11:59 PM
+  const DEFAULT_AVAILABLE_FROM = "2025-05-02T00:00:00";
+  const DEFAULT_AVAILABLE_UNTIL = "2025-05-10T23:59:00";
 
   const handleClick = () => {
     if (currentUser.role === "FACULTY") {
@@ -62,9 +69,11 @@ export default function AssignmentDesc({
           <div className="d-flex flex-column">
             <span>{assignment.title}</span>
             <span className="me-3">
-              {moduleType} | <strong>Not available until </strong>
-              {formatDateTime(releaseDate)} | <br /> <strong>Due </strong>
-              {formatDateTime(dueDate)} | {points} pts
+              {moduleType} | <strong>Available from </strong>
+              {formatDateTime(releaseDate || DEFAULT_AVAILABLE_FROM)} | <br />
+              <strong>Available until </strong>
+              {formatDateTime(dueDate || DEFAULT_AVAILABLE_UNTIL)} | {points}{" "}
+              pts
             </span>
           </div>
 

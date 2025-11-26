@@ -26,7 +26,7 @@ export default function AssignmentEditor() {
     e.preventDefault();
     // if (assignment?.isNew) {
     //   // delete assignment.isNew;
-    //   await assignmentsClient.createAssignment(assignment);
+    //   await <assignmentsClient>.createAssignment(assignment);
     // } else {
     await assignmentsClient.updateAssignment(assignment._id, assignment);
     // }
