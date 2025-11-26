@@ -106,7 +106,7 @@ export default function Assignments() {
           <button className="btn btn-outline-secondary bg-secondary rounded-1 me-1">
             <FaPlus /> Group
           </button>
-          {currentUser.role === "FACULTY" && (
+          {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
             <Link href={`/Courses/${[cid]}/Assignments/${uuidv4()}`}>
               <button className="btn btn-danger rounded-1">
                 <FaPlus /> Assignment
@@ -124,7 +124,7 @@ export default function Assignments() {
             <IoIosArrowDown className="me-3 fs-3" />
             <span className="d-flex align-items-center"> ASSIGNMENTS</span>
             <div className="ms-auto d-flex align-items-flex-end me-3">
-              {currentUser.role === "FACULTY" && (
+              {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
                 <AssignmentControlButtons percent={40} />
               )}
             </div>
@@ -145,7 +145,7 @@ export default function Assignments() {
                     points={assignment.points || 100}
                   />
                 </div>
-                {currentUser.role === "FACULTY" && (
+                {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
                   <button
                     className="btn btn-danger border-0 rounded-circle p-2 ms-3"
                     onClick={() => handleDeleteClick(assignment)}

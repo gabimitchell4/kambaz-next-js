@@ -23,7 +23,7 @@ export default function AccountNavigation() {
         Profile
       </Link>
       <br />
-      {currentUser && currentUser.role === "ADMIN" && (
+      {currentUser && (currentUser.role === "ADMIN" || currentUser.role === "FACULTY") && (
         <NavLink
           className="list-group-item"
           as={Link}

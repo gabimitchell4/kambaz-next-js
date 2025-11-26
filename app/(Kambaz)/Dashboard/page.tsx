@@ -22,6 +22,7 @@ import {
   CardBody,
 } from "react-bootstrap";
 import * as client from "../Courses/client";
+import { current } from "@reduxjs/toolkit";
 
 interface Course {
   _id: string;
@@ -180,12 +181,13 @@ export default function Dashboard() {
   const displayedCourses = showAllCourses
     ? courses
     : courses.filter((course) => enrollments.includes(course._id));
+  console.log("All courses:", courses);
   console.log("Displayed enrollments:", enrollments);
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
-      {currentUser && currentUser.role === "FACULTY" && (
+      {currentUser && currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
         <>
           <h5>
             <Button

@@ -46,7 +46,7 @@ export default function AssignmentDesc({
   const DEFAULT_AVAILABLE_UNTIL = "2025-05-10T23:59:00";
 
   const handleClick = () => {
-    if (currentUser.role === "FACULTY") {
+    if (currentUser.role === "FACULTY" || currentUser.role === "ADMIN") {
       router.push(`/Courses/${[cid]}/Assignments/${assignment._id}`);
     }
   };
@@ -61,7 +61,7 @@ export default function AssignmentDesc({
         <ListGroup.Item className="wd-lesson d-flex w-100 align-items-center justify-content-between">
           <div className="d-flex align-items-center">
             <BsGripVertical className="me-3 fs-3" />
-            {currentUser.role === "FACULTY" && (
+            {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
               <HiOutlinePencilAlt className="me-3" />
             )}
           </div>

@@ -58,7 +58,7 @@ export default function Modules() {
 
   return (
     <div>
-      {currentUser.role === "FACULTY" && (
+      {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
         <ModulesControls
           moduleName={moduleName}
           setModuleName={setModuleName}
@@ -92,7 +92,7 @@ export default function Modules() {
                   defaultValue={module.name}
                 />
               )}
-              {currentUser.role === "FACULTY" && (
+              {currentUser.role === "FACULTY" || currentUser.role === "ADMIN"&& (
                 <ModuleControlButtons
                   moduleId={module._id}
                   deleteModule={(moduleId) => onRemoveModule(moduleId)}
@@ -108,7 +108,7 @@ export default function Modules() {
                     key={`${lesson._id || lesson.name}`}
                   >
                     <BsGripVertical className="me-2 fs-3" /> {lesson.name}
-                    {currentUser.role === "FACULTY" && (
+                    {currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
                       <ModuleControlButtons
                         moduleId={module._id}
                         deleteModule={(moduleId) => {
