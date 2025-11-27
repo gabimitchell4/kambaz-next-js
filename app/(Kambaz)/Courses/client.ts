@@ -68,18 +68,40 @@ export const updateModule = async (courseId: string, module: any) => {
 
 export const deleteEnrollment = async (userId: string, courseId: string) => {
   console.log("Deleting enrollment for user:", userId, courseId); // Debugging
-  const response = await axiosWithCredentials.delete(
-    `${USERS_API}/${userId}/courses/${courseId}`
-  );
-  return response.data;
+  try {
+    const response = await axiosWithCredentials.delete(
+      `${USERS_API}/${userId}/courses/${courseId}`
+    );
+    return response.data;
+  } catch (err: any) {
+    console.error("deleteEnrollment failed:", {
+      url: `${USERS_API}/${userId}/courses/${courseId}`,
+      status: err?.response?.status,
+      data: err?.response?.data,
+      message: err?.message,
+    });
+    // Re-throw so callers can react
+    throw err;
+  }
 };
 
 export const addEnrollment = async (userId: string, courseId: any) => {
   console.log("Adding enrollment for user:", userId, courseId); // Debugging
-  const response = await axiosWithCredentials.post(
-    `${USERS_API}/${userId}/courses/${courseId}`
-  );
-  return response.data;
+  try {
+    const response = await axiosWithCredentials.post(
+      `${USERS_API}/${userId}/courses/${courseId}`
+    );
+    return response.data;
+  } catch (err: any) {
+    console.error("addEnrollment failed:", {
+      url: `${USERS_API}/${userId}/courses/${courseId}`,
+      status: err?.response?.status,
+      data: err?.response?.data,
+      message: err?.message,
+    });
+    // Re-throw so callers can react and show UI feedback
+    throw err;
+  }
 };
 
 export const getUserEnrollments = async (userId: string) => {
