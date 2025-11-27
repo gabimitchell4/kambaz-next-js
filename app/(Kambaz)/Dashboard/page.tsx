@@ -55,7 +55,22 @@ export default function Dashboard() {
   const fetchAllCourses = async () => {
     try {
       const allCourses = await client.fetchAllCourses();
-      setCoursesState(allCourses);
+
+      // Normalize different possible response shapes to an array of courses
+      const normalizeCourses = (resp: any): Course[] => {
+        if (!resp) return [];
+        if (Array.isArray(resp)) return resp;
+        if (Array.isArray(resp.data)) return resp.data;
+        if (Array.isArray(resp.results)) return resp.results;
+        if (Array.isArray(resp.courses)) return resp.courses;
+        // If it's an object with values that look like course objects, try to extract them
+        const values = Object.values(resp);
+        const maybeCourses = values.filter((v) => v && typeof v === "object" && ("_id" in v || "id" in v));
+        if (maybeCourses.length) return maybeCourses as Course[];
+        return [];
+      };
+
+      setCoursesState(normalizeCourses(allCourses));
     } catch (error) {
       console.error("Error fetching all courses:", error);
     }
@@ -178,9 +193,12 @@ export default function Dashboard() {
     }
   };
 
-  const displayedCourses = showAllCourses
-    ? courses
-    : courses.filter((course) => enrollments.includes(course._id));
+  // Ensure displayedCourses is always an array to avoid runtime errors
+  const displayedCourses = Array.isArray(courses)
+    ? showAllCourses
+      ? courses
+      : courses.filter((course) => enrollments.includes(course._id))
+    : [];
   console.log("All courses:", courses);
   console.log("Displayed enrollments:", enrollments);
   return (
@@ -202,9 +220,12 @@ export default function Dashboard() {
               id="wd-add-new-course-click"
               onClick={async () => {
                 const newCourse = { ...course, _id: uuidv4() };
-                const allCourses = await client.createCourse(newCourse);
-                if (showAllCourses) {
-                  setCoursesState(allCourses);
+                try {
+                  await client.createCourse(newCourse);
+                  // Re-fetch courses to ensure we always get a normalized array
+                  fetchAllCourses();
+                } catch (error) {
+                  console.error("Error creating course:", error);
                 }
               }}
             >
