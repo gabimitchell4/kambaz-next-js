@@ -187,7 +187,7 @@ export default function Dashboard() {
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
-      {currentUser && currentUser.role === "FACULTY" || currentUser.role === "ADMIN" && (
+      {(currentUser?.role === "FACULTY" || currentUser?.role === "ADMIN") && (
         <>
           <h5>
             <Button
@@ -281,7 +281,7 @@ export default function Dashboard() {
                       {course.description}
                     </CardText>
                     <Button variant="primary">Go</Button>
-                    {currentUser.role === "FACULTY" && (
+                    {currentUser && (currentUser.role === "FACULTY" || currentUser.role === "ADMIN") && (
                       <>
                         <Button
                           onClick={async (event) => {
